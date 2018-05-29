@@ -1,6 +1,6 @@
 <html>
   <head>
-      <title>CardinalToken Wallet</title>
+      <title>DIY Wallet</title>
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
@@ -9,15 +9,44 @@
    </head>
    <body>
        <div class="container">
-           <h1>CardinalToken Wallet</h1>
+           <h1>DIY Wallet</h1>
+           <h2>Metamask Balance:</h2>
            <h2 id="display"></h2>
            <img id="loader" src="https://loading.io/spinners/pacman/lg.eat-bean-pie-loading-gif.gif">
-           <label for="address" class="col-lg-2 control-label">Send to address</label>
+           <!-- <label for="address" class="col-lg-2 control-label">Send to address</label>
            <input id="address" type="text">
            <label for="amount" class="col-lg-2 control-label">Amount</label>
-           <input id="amount" type="text">
-           <button id="button">Give'em</button>
-           <button id="mint">Mint</button>
+           <input id="amount" type="text"> -->
+           <!-- <button class= "wallet-btn" id="button">Give'em</button> -->
+           <!-- <button class= "wallet-btn" id="mint">Mint</button> -->
+           <!-- <h2 id="yourEthDisplay"></h2> -->
+           <h2 id="ethDisplay"></h2>
+           <input id="eth_value" type="text" placeholder="Ether"><br>
+           <button class= "wallet-btn" id="deposit">Deposit</button>
+           <button class= "wallet-btn" id="withdraw">Withdraw</button>
+           <button class= "wallet-btn" id="checkBalance">Check Balance</button>
        </div>
+       <div class="container">
+            <div class="row">
+                <input type="hidden" name="count" value="1" />
+                <div class="control-group" id="fields">
+                    <label class="control-label" for="field1"><h2>Symbol and Percentage</h2></label>
+                    <div class="controls" id="profs"> 
+                        <form class="input-append">
+                            <div id="field">
+                                <select id="selectToken1"></select>
+                                <input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Enter a numerical percentage" data-items="8"/>
+                                <button id="b1" class="btn add-more" type="button">+</button>
+                                <h2>Total: </h2><input autocomplete="off" class="input-small" id="total" type="text" placeholder="" data-items="8" disabled/> %
+                                <h2>Rebalance: </h2><input autocomplete="off" class="input-small" id="rebalance" type="text" placeholder="" data-items="8"/> days
+                                <br>
+                                <input id="submit-btn" type="submit" value="Create Index">
+                            </div>
+                        </form>
+                    <br>
+                    </div>
+                </div>
+            </div>
+        </div>
    </body>
 </html>

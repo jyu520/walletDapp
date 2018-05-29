@@ -2,6 +2,11 @@ body { background-color:#F0F0F0; padding: 2em; font-family: 'Raleway','Source Sa
 .container { width: 50%; margin: 0 auto; }
 label { Display:block; Margin-bottom:10px; }
 input { Padding:10px; width: 50%; margin-bottom: 1em; }
-button { margin: 2em 0; padding: 1em 4em; Display:block; }
+.input-small{ width: 50px;  Display:inline; }
+.wallet-btn { margin: 2em 0; padding: 1em 4em; Display:inline-block; }
+#submit-btn {width: 100px}
+button { margin: 5px; padding: 10px; display: inline}
 #display { padding:1em; height: 1em; background-color:#fff; margin: 1em 0; text-align: center; }
 #loader { width: 100px; display: none; }
+#selectToken1 {margin-right: -.5px}
+select { margin-right: 5px}
