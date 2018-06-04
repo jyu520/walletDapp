@@ -4,9 +4,14 @@ label { Display:block; Margin-bottom:10px; }
 input { Padding:10px; width: 50%; margin-bottom: 1em; }
 .input-small{ width: 50px;  Display:inline; }
 .wallet-btn { margin: 2em 0; padding: 1em 4em; Display:inline-block; }
-#submit-btn {width: 100px}
 button { margin: 5px; padding: 10px; display: inline}
 #display { padding:1em; height: 1em; background-color:#fff; margin: 1em 0; text-align: center; }
 #loader { width: 100px; display: none; }
 #selectToken1 {margin-right: -.5px}
 select { margin-right: 5px}
+#deposit-view { display: none;}
+#create-view { display: none;}
+#field { display:flex; justify-content:space-between; font-size: 24px;}
+#field input{ width: 180px;}
+#buttonBoard { width: 50%; display:flex; justify-content: space-between;}
+#price-predictions{ width: 150%;}

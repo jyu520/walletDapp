@@ -4,29 +4,24 @@
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
-      <script src="js/app.js"></script>
+      <!-- Style -->
       <link rel="stylesheet" type="text/css" href="css/app.css">
    </head>
    <body>
-       <div class="container">
+       <button id="homeButton">Home</button>
+       <div class="container" id="deposit-view">
            <h1>DIY Wallet</h1>
            <h2>Metamask Balance:</h2>
            <h2 id="display"></h2>
            <img id="loader" src="https://loading.io/spinners/pacman/lg.eat-bean-pie-loading-gif.gif">
-           <!-- <label for="address" class="col-lg-2 control-label">Send to address</label>
-           <input id="address" type="text">
-           <label for="amount" class="col-lg-2 control-label">Amount</label>
-           <input id="amount" type="text"> -->
-           <!-- <button class= "wallet-btn" id="button">Give'em</button> -->
-           <!-- <button class= "wallet-btn" id="mint">Mint</button> -->
-           <!-- <h2 id="yourEthDisplay"></h2> -->
            <h2 id="ethDisplay"></h2>
            <input id="eth_value" type="text" placeholder="Ether"><br>
            <button class= "wallet-btn" id="deposit">Deposit</button>
            <button class= "wallet-btn" id="withdraw">Withdraw</button>
-           <button class= "wallet-btn" id="checkBalance">Check Balance</button>
+           <button class= "wallet-btn" id="checkBalance">Check Balances</button>
+           <button class= "wallet-btn" id="createIndex">Create Index</button>
        </div>
-       <div class="container">
+       <div class="container" id="create-view">
             <div class="row">
                 <input type="hidden" name="count" value="1" />
                 <div class="control-group" id="fields">
@@ -34,14 +29,24 @@
                     <div class="controls" id="profs"> 
                         <form class="input-append">
                             <div id="field">
-                                <select id="selectToken1"></select>
-                                <input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Enter a numerical percentage" data-items="8"/>
-                                <button id="b1" class="btn add-more" type="button">+</button>
-                                <h2>Total: </h2><input autocomplete="off" class="input-small" id="total" type="text" placeholder="" data-items="8" disabled/> %
-                                <h2>Rebalance: </h2><input autocomplete="off" class="input-small" id="rebalance" type="text" placeholder="" data-items="8"/> days
+                                <!-- <select id="selectToken1"></select> -->
+                                <p>ETH</p>
+                                <input autocomplete="off" class="input" id="ethField" name="prof1" type="text" placeholder="Enter a numerical percentage" data-items="8"/>
+                                <!-- <button id="b1" class="btn add-more" type="button">+</button> -->
+                                <p>ZRX</p>
+                                <input autocomplete="off" class="input" id="zrxField" name="prof2" type="text" placeholder="Enter a numerical percentage" data-items="8"/>
+                            </div> 
+                            <div id="price-predictions"> </div>
+                            <div id="buttonBoard">
+                                <div>
+                                    <h2>Total: </h2><input autocomplete="off" class="input-small" id="total" type="text" placeholder="" data-items="8" disabled/> %
+                                </div>
+                                <div>
+                                    <h2>Rebalance: </h2><input autocomplete="off" class="input-small" id="rebalance" type="text" placeholder="" data-items="8"/> days                 
+                                </div>
                                 <br>
-                                <input id="submit-btn" type="submit" value="Create Index">
                             </div>
+                            <button class="wallet-btn" id="submit-btn" type="submit">Deploy Index</button>
                         </form>
                     <br>
                     </div>
@@ -50,3 +55,20 @@
         </div>
    </body>
 </html>
+
+<script src="/js/jquery.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- App -->
+<script src="/js/metamask.js"></script>
+
+<!-- Templates -->
+<!-- <script src="/js/templates.js"></script> -->
+
+<!-- View -->
+<script src="/js/main-view.js"></script>
+<script src="/js/create-view.js"></script>
+<script src="/js/deposit-view.js"></script>
+<!-- Main -->
+<script src="/js/main.js"></script>
+

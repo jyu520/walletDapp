@@ -1,10 +1,5 @@
 pragma solidity ^0.4.21;
 
-contract etherreceiver{       
-    function etherreceiver() public{          
-    }    
-}
-
 contract DIY {
     mapping (address => uint256) public balances;
 
