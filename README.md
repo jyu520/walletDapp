@@ -13,4 +13,4 @@ Run "truffle compile"
 Run "truffle migrate --reset --network kovan"
 Run "npm run start" 
 
-TEAM: Ramnik Arora, Kyle Desouza, Jeffrey Yu
+TEAM: Jeffrey Yu, Ramnik Arora, Kyle Desouza
