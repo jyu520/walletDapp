@@ -2,7 +2,13 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var ObjectId = require('mongoose').Types.ObjectId;
 var mongoose = require('mongoose');
+require('dotenv').config()
+
 // var fileUpload = require('express-fileupload');
+
+
+var HttpClient = require('@0xproject/connect').HttpClient;
+var constants = require('./constants').Constants;
 var csv = require('./csv');
 // var $ = require('./app/js/jquery.min.js');
 
@@ -28,7 +34,7 @@ var app = express();
 
 var model = require('./app/js/model');
 var schemaInfo = require('./app/js/schema')
-console.log("Model value: " + model.value);
+
 // parse json bodies in post requests
 app.use(bodyParser.urlencoded({
     extended: true
@@ -40,10 +46,41 @@ app.use(express.static(__dirname + '/app'));
 
 var path = require("path");
 
-// app.get('/', function(request, response) { 
-//   console.log("/GET index")
-//   response.sendFile('/index.html');
-// })
+app.get('/', function(request, response) { 
+  console.log("/GET index")
+  response.sendFile('/index.html');
+})
+
+// console.log('window: '  + window)
+
+// window.HttpClient =  HttpClient;
+// console.log(window.HttpClient)
+
+app.get('/getHttpClient', function(request, response){
+    
+    const radarRelay = 'https://api.kovan.radarrelay.com/0x/v0/';
+    const httpClient = new HttpClient(radarRelay);
+    
+    // // console.log(constants)
+    // console.log('constants weth addr:', constants.weth_address);
+    // console.log('constants zrx addr:', constants.zrx_address);
+    
+    const weth = constants.weth_address;
+    const zrx = constants.zrx_address;
+    
+
+    httpClient.getOrderbookAsync({baseTokenAddress: weth.toLowerCase(), quoteTokenAddress: zrx.toLowerCase()}).then(function (books) {
+        console.log('Books = ' + books);
+        var best_bid_order = books.asks[books.asks.length -1];
+        var best_ask_order = books.bids[books.bids.length -1];   
+        best_ask = best_ask_order.takerTokenAmount / best_ask_order.makerTokenAmount;
+        best_bid = best_bid_order.makerTokenAmount / best_bid_order.takerTokenAmount;
+        
+
+        response.status(200).send(JSON.stringify([best_ask, best_bid, best_ask_order, best_bid_order]));
+      })
+    .catch(console.error);
+})
 // var template = require('./app/js/templates.js');
 // app.get('/template', template.get);
 // var upload = require('./app/js/upload.js');
@@ -64,9 +101,8 @@ app.get('/prices', async function(request, response) {
         return;
     }
     var prices = JSON.parse(JSON.stringify(priceData));
-    console.log("tokens: " + prices);
     response.status(200).send(JSON.stringify(prices));
-});
+}).sort({"symbol":1,"timestamp":1});
 });
 
 
@@ -95,13 +131,13 @@ app.get('/tokens', function (request, response) {
           return;
       }
       var tokens = JSON.parse(JSON.stringify(tokenData));
-      console.log("tokens: " + tokens);
       response.status(200).send(JSON.stringify(tokens));
   });
 });
 
-app.listen(process.env.PORT || 3000);
-console.log('Listening at 127.0.0.1:' + 3000);
+port = process.env.PORT || 3000;
+app.listen(port);
+console.log('Listening at 127.0.0.1:' + port);
 
 async function clearDB() {
   await model.resetDB();
@@ -135,3 +171,4 @@ async function test() {
 
 // test();
 
+// 
